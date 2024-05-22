@@ -1,0 +1,10 @@
+const body=document.querySelector("body"),btn_side=document.querySelector(".side_btn"),btn_create=document.querySelector(".btn_create");let ul_list=document.querySelector(".main_content_td_lst_title");const btn_del=document.querySelector(".side_btn_del");window.addEventListener("load",()=>{let e=localStorage.getItem("todoList");if(e){let t=JSON.parse(e);t.forEach(e=>{let t=document.createElement("li");t.classList.add("main_content_td_lst_item"),t.innerHTML=`
+                <label class="lst_label">
+                    <input type="checkbox" name="task">
+                        ${e}
+                </label>
+            `,ul_list.appendChild(t)})}ul_list.style}),btn_side.addEventListener("click",()=>{body.classList.toggle("menuOpen")});const time=(e=new Date)=>{let t=e.getFullYear(),l=e.getMonth(),n=e.getDate(),a=e.getHours().toString().padStart(2,"0"),r=e.getMinutes().toString().padStart(2,"0");document.querySelector(".time_logo").textContent=`現在は　${t}年${l+1}月${n}日 ${a}時${r}分　です。`};time(),setInterval(time,5e3);const create=()=>{create_time=(e=new Date)=>{let t=e.getFullYear(),l=e.getMonth(),n=e.getDate();return{year:t,month:l,day:n}};let{year:e,month:t,day:l}=create_time(),n=document.querySelector(".text").querySelector("input"),a=`${n.value}（${e}/${t+1}/${l}作成）`;0===n.value.length?alert("タスクを入力してください"):((()=>{let e=document.createElement("li");e.classList.add("main_content_td_lst_item"),e.innerHTML=`
+                <label class="lst_label">
+                    <input type="checkbox" name="task">
+                    ${a}
+                </label>`,ul_list.appendChild(e),saveToLocalStorage()})(),n.value=null)};btn_create.addEventListener("click",create);const check_dlt=()=>{let e=ul_list.querySelectorAll("li");for(let t=e.length-1;t>=0;t--){let l=e[t].querySelector("input");l&&l.checked&&e[t].parentNode===ul_list&&ul_list.removeChild(e[t])}saveToLocalStorage()};btn_del.addEventListener("click",check_dlt);const saveToLocalStorage=()=>{let e=ul_list.querySelectorAll("li"),t=Array.from(e).map(e=>e.textContent.trim()),l=JSON.stringify(t);localStorage.setItem("todoList",l)};

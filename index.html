@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kameron:wght@500&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/vendors/css-reset.css">
+    <link rel="stylesheet" href="style/style.css">
+    <title>シンプルなTODOリスト</title>
+    <meta name="description" content="This site is a test site. シンプルなTODOリストです。">
+    <link rel="icon" href="images/logo.svg">
+    <link rel="icon alternate" href="images/logo_alternate.png">
+</head>
+<body>
+    <div id="global-container">
+        <div id="container">
+
+            <header class="header">
+                <!-- <div class="header_hidden"></div> -->
+                <div class="header_title">
+                    <span class="header_logo_en">TODO</span>
+                    <span class="header_logo_ja">リスト</span><br>
+                    <!-- <span class="header_logo_ja2">~セキュリティ上の観点より個人情報などの重要なデータは入力しないでください~</span> -->
+                </div>
+            </header>
+
+            <nav class="side">
+                        <button class="side_btn">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                        </button>
+                        <button class="side_btn_del" >
+                            リスト<br>削除
+                        </button>
+                        <div class="side_main">
+                            <div class="side-menu_logo">
+                                <span class="side-menu_logo_moji">
+                                    時間別
+                                </span>
+                            </div>
+                            <ul class="side-list">
+                                <li class="side-list_item">
+                                    <a href="#" class="side-list_item_a">年</a>
+                                </li>
+                                <li class="side-list_item">
+                                    <a href="#" class="side-list_item_a">月</a>
+                                </li>
+                                <li class="side-list_item">
+                                    <a href="#" class="side-list_item_a">日</a>
+                                </li>
+                                <li class="side-list_item">
+                                    <a href="#" class="side-list_item_a">時</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="side-menu_logo">
+                                <span class="side-menu_logo_moji">
+                                    分類別
+                                </span>
+                            </div>
+                            <ul class="side-list">
+                                <li class="side-list_item">
+                                    <a href="#" class="side-list_item_a">仕事</a>
+                                </li>
+                                <li class="side-list_item">
+                                    <a href="#" class="side-list_item_a">趣味</a>
+                                </li>
+                                <li class="side-list_item">
+                                    <a href="#" class="side-list_item_a">家族</a>
+                                </li>
+                                <li class="side-list_item">
+                                    <a href="#" class="side-list_item_a">友人</a>
+                                </li>
+                            </ul>
+                        </div>
+                    <!-- </div> -->
+            </nav>
+
+            <div class="content">
+                <div class="main_content">
+                    <div class="main_content_time">
+                        <span class="time_logo">
+                            現在は　○○年　○○月　○○：○○　です。
+                        </span>
+                    </div>
+                    <div class="main_content_td_lst">
+                        <ul class="main_content_td_lst_title">
+                            <!-- <li class="main_content_td_lst_item">
+                                <label class="lst_label">
+                                    <input type="checkbox" name="task">
+                                    （例）卵を買ってくる
+                                </label>
+                            </li>
+                            <li class="main_content_td_lst_item">
+                                <label class="lst_label">
+                                    <input type="checkbox" name="task">
+                                    （例）牛乳を買ってくる
+                                </label>
+                            </li>
+                            <li class="main_content_td_lst_item">
+                                <label class="lst_label">
+                                    <input type="checkbox" name="task">
+                                    （例）家を探す
+                                </label>
+                            </li>
+                            <li class="main_content_td_lst_item">
+                                <label class="lst_label">
+                                    <input type="checkbox" name="task">
+                                    （例）仕事を探す
+                                </label>
+                            </li> -->
+                        </ul>
+                    </div>
+
+                    <div class="text">
+                        <p class="text_nav">タスクを入力</p>
+                        <input type="text" name="text">
+                    </div>
+
+                    <div class="btn">
+                        <button class="btn_create">
+                            <span>新規作成</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg_img">
+                    <ul class="photos">
+                        <li class="photos_size photos_animation1">
+                            <img class="photo" src="images/sparrow-8387465_640.jpg" alt="">
+                        </li>
+                        <li class="photos_size photos_animation2">
+                            <img class="photo" src="images/beach-8268375_640.jpg" alt="">
+                        </li>
+                        <li class="photos_size photos_animation3">
+                            <img class="photo" src="images/mountains-8573646_640.jpg" alt="">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer_logo item">
+                    <img class="footer_logo_img" src="images/logo.svg" alt="">
+                    <span class="footer_logo_moji">初めての</span>
+                    <span class="footer_logo_moji">TODO</span>
+                    <span class="footer_logo_moji">リスト</span>
+                    <div class="footer_copyright">&copy;tkgtkg123</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="scripts/main.js"></script>
+
+</body>
+</html>

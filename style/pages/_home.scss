@@ -1,0 +1,373 @@
+@use '../globals/index' as*;
+@use '../parts/common' as*;
+
+// 右側に謎の空白ができた時のはみだし要素確認用。後で削除
+// * {
+//     outline:2px red solid;
+// }
+// ここまで削除
+
+.sideHidden {
+    opacity: 0;
+}
+
+.header {
+    position: relative;
+    height: 145px;
+    border-top: 1px solid $cBorder;
+    border-bottom: 1px solid $cBorder;
+    
+    &_title{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+        text-align: center;
+    }
+
+    &_logo_ja2 {
+        display: block;
+        font-size: 1.2rem;
+        color: red;
+        font-weight: bold;
+    }
+
+}
+
+.main_content {
+    margin: 0 20%;
+
+    &_time {
+        width: 100%;
+        margin: 4vh 0 ;
+        font-size: $fsTdword;
+    }
+
+    &_td_lst{
+        
+        &_title {
+            list-style: none;
+            padding-left: 0;
+            margin: 15vh 0;
+        }
+        
+        &_item {
+            font-size: $fsTdword;
+            padding: 3vh;
+            border: 1px solid $cBorder;
+            background-color: #dcdcdc;
+            animation-name: listAnimation;
+            animation-duration: 1s;
+
+            > label {
+                color: $cBlack;
+                cursor: pointer;
+                
+                >input {
+                    position: relative;
+                    top: 3.3px;
+                    height: 1em;
+                    width: 1em;        
+                    cursor: pointer;            
+                    
+                }
+            }
+        }
+    }
+}
+
+.bg_img {
+    display: flex;
+    justify-content: center;
+}
+
+.photos {
+    display: flex;
+    margin: 20vh 20% ;
+    padding: 0;
+    list-style: none;
+
+    &_size {
+        // margin: 0 5px;
+        overflow: hidden;
+        
+
+        > img {
+            width: 307px;
+            height: 60vh;
+            object-fit: cover;
+        }
+    }
+
+    &_animation:nth-child(odd) {
+        margin: 0 0;
+    }
+    &_animation2 {
+        margin: 0 2vw;
+    }
+}
+
+.text {
+
+    &_nav{
+        font-size: 1.3rem;
+    }
+    
+    & > input {
+        width: 100%;
+        height: 50px;
+    }
+}
+
+.btn {
+    position: relative;
+    text-align: center;
+    margin: 50px;
+    z-index: 100;
+
+    &_create {
+        width: 180px;
+        height: 55px;
+        background-color: $cWhite;
+        font-size: $fsTdword;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        perspective: 300px;
+
+        & > span {
+            display: inline-block;
+            transform: translateZ(20px);
+            color: $cBlack;
+        }
+
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            background-color: $cBlack;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotateX(90deg);
+            transition: all 0.3s;
+            transform-origin: top center;
+            opacity:0;
+        }
+
+        &:hover {
+            
+            & > span {
+                color: White;
+                font-weight: 500;
+            }
+
+            &::before {
+                transform: none;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.footer {
+    position: relative;
+    width: 100%;
+    height: 65px;
+    border-top: 1px solid $cBorder;
+    border-bottom: 1px solid $cBorder;
+
+    &_logo {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 65px;
+        
+        &_img {
+            width: 50px;
+            height: 42px;
+            margin:12.5px 15px;
+        }
+    }
+}
+
+.side {
+    height: 100%;
+    width: 240px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color:#ffa07a73;
+    border: 1px solid $cBorder;
+    z-index: 300;
+    backdrop-filter: blur(10px);
+    transform: translateX(-160px);
+    transition: .5s;
+
+    &_btn {
+        width: 50px;
+        margin:15px 0 15px 173px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        &_del {
+            width: 64px;
+            margin-left: 165px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        > span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            margin: 9px 0;
+            background-color: $cBlack;
+            transition: .5s;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &_main {
+        margin-left: 30px;
+    }
+
+    &-menu_logo {
+        margin: 10px 0;
+        font-size: 1.3em;
+        font-weight: 600;
+    }
+
+    &-list {
+        list-style: none;
+        padding: 0;
+
+        &_item {
+            margin: 10px 0;
+            font-size: 1.1em;
+
+            &_a {
+                display: block;
+                width: 150px;
+                text-decoration: none;
+                color: $cBlack;
+
+                &:hover {
+                    background-color: #DAE3F3;
+                }
+            }
+        }
+    }
+}
+
+.menuOpen {
+
+    & .side {
+        transform: translateX(0);
+        transition: .5s;
+    }
+
+    & .side_btn {
+        & > span {
+            &:nth-child(1) {
+                transition: .5s;
+                transform: translateY(11px) rotate(135deg);
+            }
+            &:nth-child(2) {
+                transition: .5s;
+                transform: translateX(-18px) scaleX(0);
+            }
+            &:nth-child(3) {
+                transition: .5s;
+                transform: translateY(-11px) rotate(-135deg);
+            }
+        }
+    }
+}
+
+@keyframes listAnimation {
+    0% {
+        transform: translateY(60px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+// モバイル版
+@media (max-width: 600px) {
+    .header {
+        width: 600px;
+
+        &_logo_en {
+            font-size: 35px;
+        }
+    }
+
+    .main_content { 
+        margin-left: 20%;
+        margin-right: 5%;
+
+        &_time {
+            width: 601px;
+        }
+
+        &_td_lst_title {
+            margin-top: 4vh;
+            margin-bottom: 5vh;
+        }
+    }
+
+    .text > input {
+        border: 1px solid $cBorder;
+    }
+
+    .bg_img {
+        margin-left: 20%;
+        margin-right: 5%;
+    }
+
+    .photos {
+        display: block;
+        margin: 0;
+
+        &_size {
+            width: 71vw;
+            height: 20vh;
+            margin: 0;
+            margin-bottom: 15px;
+
+            & > img {
+                height: 20vh;
+            }
+        }
+    }
+
+    .footer {
+        margin-left: 18%;
+        height: 100px;
+
+        &__logo {
+            line-height: 0px;
+        }
+
+        &_logo_moji {
+            width: 21vw;
+        }
+
+        &_copyright {
+            position: absolute;
+            top: 25%;
+            left: 35%;
+        }
+    }
+}
